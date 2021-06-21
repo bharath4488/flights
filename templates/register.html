@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel='stylesheet'>
+    
+
+
+
+
+
+    <title></title>
+  </head>
+  <body>
+
+    
+<br>
+
+<div class="container">
+  <div class="header clearfix">
+   
+    <h3 class="text-muted">Scatter Plot</h3>
+  </div>
+<br>
+
+<center>
+
+
+<br>
+<h1>Register</h1><br>
+
+<form method="POST" action="register">
+  {% csrf_token %}
+
+  <input class="form-control" type="text" placeholder="First Name" aria-label="default input example" name="first_name" style="width: 300px;"><br>
+  <!--<input type="text" placeholder="First Name" name="first_name">-->
+
+  <input class="form-control" type="text" placeholder="Last Name" aria-label="default input example" name="last_name" style="width: 300px;"><br>
+  <!--<input type="text" placeholder="Last Name" name="last_name"><br><br>-->
+
+  <input class="form-control" type="email" placeholder="Email" aria-label="default input example" name="email" style="width: 300px;"><br>
+  <!--<input type="email" placeholder="Email" name="email">-->
+
+  <input class="form-control" type="username" placeholder="User name" aria-label="default input example" name="user_name" style="width: 300px;"><br>
+  <!--<input type="username" placeholder="User name" name="user_name"><br><br>-->
+
+  <input class="form-control" type="password" placeholder="Password" aria-label="default input example" name="password1" style="width: 300px;"><br>
+  <!--<input type="password" placeholder="Password" name="password1">-->
+
+  <input class="form-control" type="password" placeholder="Confirm password" aria-label="default input example" name="password2" style="width: 300px;"><br>
+  <!--<input type="password" placeholder="Confirm password" name="password2"><br><br>-->
+
+  <input type="submit" class="btn btn-primary" value='Register'><br><br>
+
+  <p>Already have an account?<a href="{% url 'login' %}"> Login.</a></p><br><br>
+
+</form>
+
+
+<div>
+  {% for message in messages %}
+  <h3>{{ message }}</h3>
+  {% endfor %}
+</div>
+
+
+
+
+
+
+</center>
+
+</div>
+</body>
+</html>

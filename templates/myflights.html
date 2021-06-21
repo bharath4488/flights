@@ -1,0 +1,49 @@
+{% extends 'bootstrap.html' %}
+
+
+{% block body %}
+<h7 class	= "text-muted">Your flight bookings are ordered descending</h7><br><br>
+{% if not matcheduser %}
+<div class="jumbotron">
+  <center><h6 class="text-muted">Nothing here.</h6></center>
+  
+</div>
+{% else %}
+{% for orders in matcheduser %}
+
+
+
+
+
+<div class="jumbotron">
+  <h4 >{{orders.journey}}</h4>
+  <h6 class="text-muted" style="float: right;"><i>Journey date: {{orders.journeydate}}</i></h6>
+  <h6 class="text-muted">{{orders.category}}</h6>
+  
+  <hr>
+  
+  
+  <h6 class="text-muted">Cost: Rs.{{orders.total_price}}</h6>
+  
+  <h6 class="text-muted" style="float: right;">Booked on: {{orders.bookedon}}</h6>
+  
+  
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endfor %}
+{% endif %}
+
+{% endblock body %}
+
+
+

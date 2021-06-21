@@ -1,0 +1,128 @@
+{% extends 'bootstrap.html' %}
+
+
+{% block body %}
+<style>
+  body {
+    background-color: #eeeeee
+}
+
+.green {
+    color: rgb(15, 207, 143);
+    font-weight: 680
+}
+
+@media(max-width:567px) {
+    .mobile {
+        padding-top: 40px
+    }
+}
+</style>
+
+
+<div class="container rounded bg-white">
+  <div class="row d-flex justify-content-center pb-5">
+      <div class="col-sm-5 col-md-5 ml-1">
+          <div class="py-4 d-flex flex-row">
+              <h5><span class="fa fa-check-square-o"></span><b>Scatter Plot</b> | </h5><span class="pl-2">Pay</span>
+          </div>
+          <h4 class="green">Rs. {{maxtotalbill}}</h4>
+          <h4>Boarding pass + taxes</h4>
+          <div class="d-flex pt-2">
+              <div>
+                  <p><b>Taxes: </b><span class="green"> Rs. {{taxbill}}</span></p>
+              </div>
+              <div class="ml-auto">
+                  <p class="text-primary"><i class="fa fa-plus-circle text-primary"></i></p>
+              </div>
+          </div>
+          <p>Insurance claims and all necessary dependencies will be submitted to your insurer for the coverred portion of this order</p>
+          <div class="rounded bg-light d-flex">
+              
+          </div>
+          <hr>
+          <div class="pt-2">
+            <div class="d-flex">
+               
+                
+            </div>
+            <form class="pb-3">
+                <div class="d-flex flex-row align-content-center">
+                    <div class="pt-2 pr-2"><input type="radio" name="radio1" id="r1" checked></div>
+                    <div class="rounded border d-flex w-100 px-2">
+                        <div class="pt-2">
+                            <p><i class="fa fa-cc-visa text-primary pr-2"></i>Visa Debit Card</p>
+                        </div>
+                        <div class="ml-auto pt-2">************3456</div>
+                    </div>
+                </div>
+            </form>
+            <form class="pb-3">
+              <div class="d-flex flex-row w-100">
+                  <div class="pt-2 pr-2"><input type="radio" name="radio2" id="r2"></div>
+                  <div class="rounded d-flex w-100 px-2">
+                      <div class="pt-2">
+                          <p><i class="fa fa-cc-mastercard pr-2"></i>Mastercard Office</p>
+                      </div>
+                      <div class="ml-auto pt-2">************1038</div>
+                  </div>
+              </div>
+          </form>
+          <div> <form method='POST'>{% csrf_token %}<input type="submit" value="Proceed to payment" class="btn btn-primary btn-block"> </form></div>
+      </div>
+  </div>
+  <div class="col-sm-3 col-md-4 offset-md-1 mobile">
+      <div class="py-4 d-flex justify-content-end">
+          <h6><a href="{% url 'home' %}">Cancel and return to website</a></h6>
+      </div>
+      <div class="bg-light rounded d-flex flex-column">
+          <div class="p-2 ml-3">
+              <h4>Order Recap</h4>
+            </div>
+            <div class="p-2 d-flex">
+                <div class="col-8">Adults </div>
+                <div class="ml-auto">Rs .{{adultscost}}</div>
+            </div>
+            <div class="p-2 d-flex">
+                <div class="col-8">Children</div>
+                <div class="ml-auto">Rs .{{childcost}}</div>
+            </div>
+           
+            <div class="border-top px-4 mx-3"> </div>
+            <div class="p-2 d-flex pt-3">
+                <div class="col-8">Total</div>
+                <div class="ml-auto">Rs. {{totalbill}}</div>
+            </div>
+           
+          <div class="border-top px-4 mx-3"></div>
+          <div class="p-2 d-flex pt-3">
+              <div class="col-8">GST (18%)</div>
+              <div class="ml-auto"><b>Rs. {{taxbill}}</b></div>
+          </div>
+          
+          <div class="border-top px-4 mx-3"></div>
+          <div class="p-2 d-flex pt-3">
+              <div class="col-8"><b>Grand total</b></div>
+              <div class="ml-auto"><b class="green">Rs. {{maxtotalbill}}</b></div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

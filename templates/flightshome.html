@@ -1,0 +1,166 @@
+{% extends 'bootstrap.html'%}
+{% load static %}
+
+
+
+
+{% block body %}
+
+
+
+{% if user.is_authenticated %}
+
+
+
+
+<!---------aboutflights-->
+<br>
+<center></centre><p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p></center><br>
+          </form>
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+      </div><br><hr><br>
+<!---------end about flights-->
+
+
+
+      <div class="jumbotron" style="background-image: url(static/img/andreas-weiland-9_6gMjGuZjk-unsplash.jpg); text-align: justify; min-width: 0px; min-height: 0px; float: none;">
+        
+        
+        <p></p>
+      <form method='POST'>
+        {% csrf_token %}
+        
+      
+      <div class="form-group" style="float: none;">
+        <h1 style="float: none;">Welcome to flights, {{user.first_name}}.</h1>
+        <h4 class="text-muted">Choose your journey.</h4>
+
+        <br>
+        <label>Select origin </label>
+        <select class="form-control" name='origin' style="width: 400px">
+                                    {% for airport in cities %}
+                                    <option>{{airport.city}}</option>
+                                    {% endfor %}
+        </select></div>
+        <div class="form-group">
+          <label>Select destination </label>
+          <select class="form-control" name='destination' style="width: 400px">
+                                    {% for airport in cities %}
+                                    <option>{{airport.city}}</option>
+                                    {% endfor %}
+          </select></div>
+
+          
+
+
+
+<!---------------------------date picker------------------------------------------------------------------------>
+<div style="width: 400px;">
+  <h6>When do you want to fly?</h6>
+  <input type="date" id="birthday" name="Datepicker" class="form-control">
+</div>
+
+<!-----------------------------end date----------------------------------------------------------------------------->
+
+<br>
+
+<label>What do you want to fly in?</label>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Economy" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Economy
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="First Class">
+  <label class="form-check-label" for="exampleRadios2">
+    First Class
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="Business class" disabled>
+  <label class="form-check-label" for="exampleRadios3">
+    Business class
+  </label>
+</div>
+
+
+<br>
+
+
+
+
+
+<!----------------------------------------------------Incriment-------------------------------------------------------------------->
+
+<div class="form-group">
+  <label>No. of adults</label> <input class="form-control" name="adults" type=number min=1 max=10 style="width: 180px;">
+  <label >Any Children?</label> <input class="form-control" name="children" type=number min=0 max=10 style="width: 180px;">
+</div>
+<br><br>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+
+
+
+
+
+
+            
+            <input type="submit" class="btn btn-primary" value="Search Flights"> 
+            </div>
+          
+
+          </form>
+            
+
+
+            
+
+      <br><br><br>
+      <hr>
+      <br>
+      <footer class="footer">
+        <p>© Company 2021</p>
+        <h2 class="display-4" style="float: right;">ScatterPlot Flights</h2></div> 
+      </footer>
+      <br>
+    
+
+{% else %}
+<center>
+<h1>Welcome, Please login to continue.</h1>
+    <a class="btn btn-primary" href="login">Login</a>
+</center>
+
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}

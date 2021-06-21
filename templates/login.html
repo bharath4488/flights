@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel='stylesheet'>
+    
+
+
+
+
+
+    <title></title>
+  </head>
+  <body>
+
+    
+<br>
+
+<div class="container">
+  <div class="header clearfix">
+    
+    <h3 class="text-muted">Scatter Plot</h3>
+  </div>
+<br>
+
+<center>
+<br>
+<h1>Login</h1><br>
+
+
+
+<form method="POST" action="login">
+	{% csrf_token %}
+
+		<input class="form-control" type="username" placeholder="Username" aria-label="default input example" name="User_Name" style="width: 300px;">
+	
+		<!--<input type="username"placeholder="User name" name="User_Name">-->
+		
+		<br>
+
+		<input class="form-control" type="password" placeholder="Password" aria-label="default input example" name="Password" style="width: 300px;">
+
+
+		<!--<input type="password" placeholder="Password" name="Password"><br><br>-->
+		<br><br>
+		
+
+	<input type="submit" class="btn btn-primary" value='Login'><br><br>
+	<p>First time?<a href="{% url 'register' %}"> Register here.</a></p><br><br>
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+<div>
+  	{% for message in messages %}
+  	<h2>{{ message }}</h2>
+  	{% endfor %}
+</div>
+</center>
+
+</div>
+</body>
+</html>

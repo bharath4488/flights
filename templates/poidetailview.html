@@ -1,0 +1,116 @@
+{% extends 'bootstrap.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<body>
+
+  
+  <div class="container">
+    <div class="jumbotron" >
+      <img src={{object.header_image.url}} style="text-align: center; border-radius: 6px; object-fit: cover;" width="1020" height="650" >		  <br><br>
+      <h1 class="display-3" style="text-align: center;">{{object}}</h1>	<h2 class="text-muted" style="text-align: center;">{{object.city}} | {{object.category}}</h2>		  <br><br>
+      <p class="lead" style="text-align: center;">{{object.Short_Description}}</p>		  
+      <hr class="my-4">		  
+      <p style="text-align: justify; font-size:150%;">{{object.Description}}</p>		  
+      <p class="lead">					  </p>		
+    </div>
+      
+
+  <div class="jumbotron">
+    <h1 class="text-muted" style="text-align: center;">The place you are reading about is here...</h1><p><br></p>
+        <p>
+           <!--Start Map-->
+           <div id="map" style="height: 650px; width: 1020px; text-align:center;"></div>
+           <!--End Map--><br>
+        </p>
+  </div><div></div>
+  </div>
+
+  <div class="jumbotron">
+    <h1  style="text-align: center;">Modes of transport</h1><p><br></p>
+        <p style="text-align: center; font-size:150%;">
+          {{object.Transport_methods}}
+        </p><br><hr><br>
+    <h1  style="text-align: center;">Tips and suggestions</h1><p><br></p>
+        <p style="text-align: center; font-size:150%;">
+          {{object.Tips}}
+          {{object.Suggestions}}
+        </p>
+  </div>
+
+  <script>
+    var marker;
+    var image = '{% static "img/map-marker.png" %}';
+      function initMap() {
+        var latitude = parseFloat('{{object.Latitude}}');
+        var longitude = parseFloat('{{object.Longitude}}');
+
+        var myLatLng = {lat: latitude, lng: longitude};
+  
+    // Specify features and elements to define styles.
+        var styleArray = [
+          {
+            featureType: "all",
+            stylers: [
+             { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#000000" },
+              { saturation: 50 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+    
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          scrollwheel: false,
+       // Apply the map style array to the map.
+          styles: styleArray,
+          zoom: 7
+        });
+  
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          map: map
+        });
+  
+    // Create a marker and set its position.
+        marker = new google.maps.Marker({
+          map: map,
+      icon: image,
+      draggable: true,
+          animation: google.maps.Animation.DROP,
+          position: myLatLng
+        });
+    marker.addListener('click', toggleBounce);
+      }
+    
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7V-mAjEzzmP6PCQda8To0ZW_o3UOCVCE&callback=initMap" async defer></script>
+    <br><hr><br>
+
+  <footer class="footer">
+    <p>© Company 2021</p>
+  </footer>
+
+</div>
+
+
+{% endblock body %}

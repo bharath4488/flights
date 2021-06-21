@@ -1,0 +1,126 @@
+{% extends 'bootstrap.html' %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+  <div class="jumbotron">
+    <h1 class="text-muted" style="float: right;"><i><b>Boarding Pass</b></i></h1>
+    <h4 class="text-muted"><i>First name: {{ user.first_name }}</i></h4><h4 class="text-muted"><i>Last name: {{ user.last_name }}</i></h4><br><hr>
+    <p class="text-muted">Trip: {{ distance }} Km approx.</p>
+    <h2 >{{ ok1 }}</h2>
+    <h5 class="text-muted" style="float: right;"><i>Date Time {{ datetime }}</i></h5>
+    <p class="text-muted">{{ airport1 }}</p>
+    
+    <hr>
+    <h5 class="text-muted" style="float: right;"><i>{{ flighttype }}</i></h5>
+    <h2 >{{ ok2 }}</h2>
+    <p class="text-muted">{{ airport2 }}</p>
+    <h5 class="text-muted"><i>{{ totaladultpassengers }} adults</i></h5>
+    <h5 class="text-muted"><i>{{ totalchildpassengers }} children</i></h5>
+    <h5 class="text-muted" style="float: right;">{{ price }} INR</h5>
+    
+    
+    
+  </div>
+
+
+  <a href="{% url 'payments' %}" class="btn btn-primary" style="float: right;">Proceed to pay</a>
+
+
+<br>
+
+
+
+<br>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="footer">
+    <p>© Company 2021</p>
+  </footer>
+
+</div> <!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'bootstrap.html' %}
+{% load static %}
+
+
+
+{% block body %}
+  <body>
+
+      <div class="jumbotron" style="background-image: url(static/img/mohd-aram-6dsy_LEmoYE-unsplash.jpg);">
+        <h5 class="lead">Welcome, {{user.first_name}}.</h5>
+        <h1 class="display-3">Explore India,</h1>
+        <h5 class="display-5">A sub continent of different nationalities.</h5>
+        <p class="lead">Join us for our immensive travel packs and craft one on your own.</p>
+        <p><a href="{% url 'states' %}" class="btn btn-primary btn-sm" >Search Places</a>
+        <button type="button" class="btn btn-dark btn-sm">Craft a pack</button></p>
+        
+      </div><br>
+<hr><br>
+<div class="jumbotron" style="background-image: url(static/img/jess-bailey-kfDHPpCQEBQ-unsplash.jpg);">
+<center><h1 class="display-4">How We Work?</center></h1><br>
+      <div class="row marketing">
+        
+        <div class="col-lg-6">
+          
+          <h4>Culturally Driven</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Transparency</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+      
+      
+      </div></div>
+  
+      <br><hr><br>
+    
+      <footer class="footer">
+        <p style="float: right;">© ScatterPlot 2021</p>
+      </footer>
+    
+    
+    </div> </div>
+
+
+
+    <script>
+      var marker;
+      var image = '{% static "img/map-marker.png" %}';
+        function initMap() {
+          var myLatLng = {lat: 17.505134, lng: 78.541350};
+  
+      // Specify features and elements to define styles.
+          var styleArray = [
+            {
+              featureType: "all",
+              stylers: [
+               { saturation: -80 }
+              ]
+            },{
+              featureType: "road.arterial",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#000000" },
+                { saturation: 50 }
+              ]
+            },{
+              featureType: "poi.business",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            }
+          ];
+      
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            scrollwheel: false,
+         // Apply the map style array to the map.
+            styles: styleArray,
+            zoom: 7
+          });
+  
+          var directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map
+          });
+  
+      // Create a marker and set its position.
+          marker = new google.maps.Marker({
+            map: map,
+        icon: image,
+        draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: myLatLng
+          });
+      marker.addListener('click', toggleBounce);
+        }
+      
+      function toggleBounce() {
+          if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+          } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7V-mAjEzzmP6PCQda8To0ZW_o3UOCVCE&callback=initMap" async defer></script>
+
+</body>
+{% endblock body %}
